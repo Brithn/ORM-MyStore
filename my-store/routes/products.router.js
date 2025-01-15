@@ -1,38 +1,50 @@
-const express = require('express');
-const { faker } = require('@faker-js/faker');
+const express = require('express'); //Importar express
+const ProductsService = require('./../services/products.service'); //Importar el servicio de productos
 const router = express.Router();
+const service = new ProductsService(); //Instanciar el servicio de productos
 
-// Ruta para obtener productos
 router.get('/', (req, res) => {
-  const products = [];
-  const { size } = req.query;
-  const limit = size || 10;
-  for (let index = 0; index < limit; index++) {
-    products.push({
-      name: faker.commerce.productName(),
-      price: parseInt(faker.commerce.price(), 10),
-      image: faker.image.url(),
-    });
-  }
+  const products = service.find();
   res.json(products);
 });
 
-// Ruta para filtro
 router.get('/filter', (req, res) => {
   res.send('Soy un filter');
 });
 
-// Ruta para obtener un producto por ID
 router.get('/:id', (req, res) => {
   const { id } = req.params;
-  res.json({ id, name: 'Producto 1', price: 200 });
+  const product = service.findOne(id);
+  res.json(product);
 });
 
 router.post('/', (req, res) => {
   const body = req.body;
+  const newProduct = service.create(body);
+  res.status(201).json(newProduct);
+});
+
+router.patch('/:id', (req, res) => {
+  const { id } = req.params;
+  const body = req.body;
+  const product = service.update(id, body);
+  res.json(product);
+});
+
+router.put('/:id', (req, res) => {
+  const { id } = req.params;
+  const body = req.body;
   res.json({
-    message: 'Registro creado',
+    message: 'Registro actualizado con put',
     data: body,
+    id,
   });
 });
+
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  const product = service.delete(id);
+  res.json(product);
+});
+
 module.exports = router;
