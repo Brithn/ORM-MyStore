@@ -35,9 +35,9 @@ class ProductsService {
     return newProduct;
   }
 
-  find() {
+  async find() {
     const query = 'SELECT * FROM tasks';
-    const rst = this.pool.query;
+    const rst = await this.pool.query(query);
     // return this.products;
     return rst.row;
   }
