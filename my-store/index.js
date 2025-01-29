@@ -3,6 +3,7 @@ const routerApi = require('./routes'); // Importar las rutas
 const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.handler');
 const app = express(); // Asignar express a mi aplicación
 const cors = require('cors');
+require('dotenv').config();
 
 
 app.use(cors());
