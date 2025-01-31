@@ -32,7 +32,7 @@ class ProductsService {
   }
 
   async find() {
-    const query = 'SELECT * FROM tasks';
+    const query = 'SELECT * FROM products';
     const {data} = await this.sequalize.query(query);
     return data;
   }
@@ -61,6 +61,7 @@ class ProductsService {
     return this.products[index];
   }
 
+  
   async delete(id) {
     const index = this.products.findIndex((item) => item.id === id);
     if (index === -1) {

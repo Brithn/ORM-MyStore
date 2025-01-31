@@ -1,0 +1,13 @@
+CREATE TABLE proveedores (
+    id uuid PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    ruc VARCHAR(13) UNIQUE NOT NULL,
+    direccion TEXT NOT NULL,
+    estado BOOLEAN DEFAULT TRUE
+);
+drop table proveedores;
+
+select * from proveedores
+INSERT INTO proveedores (id, name, ruc, direccion, estado) VALUES 
+(1, 'Proveedor Uno', '1234567890123', 'Dirección del Proveedor Uno', TRUE),
+(2, 'Proveedor Dos', '9876543210987', 'Dirección del Proveedor Dos', TRUE);
