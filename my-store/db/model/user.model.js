@@ -23,3 +23,14 @@ const UserSchema={
     allowNull: false,
   },
 }
+
+class User extends Model {
+  static config(sequelize) {
+    return {
+      sequelize,
+      tableName: USER_TABLE,
+      modelName: 'User',
+      timestamps: true,
+    };
+  }
+}
