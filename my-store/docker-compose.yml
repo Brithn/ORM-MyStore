@@ -18,5 +18,3 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: espe@mail.com
       PGADMIN_DEFAULT_PASSWORD: espe
-    volumes:
-        - ./pgadmin-data:/var/lib/pgadmin
