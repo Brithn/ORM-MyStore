@@ -32,13 +32,14 @@
 
 // module.exports = UserService;
 const boom = require('boom');
-const { models } = require('./../libs/sequelize');
+const { models } = require('./../libs/sequalize');
 
 class UserService {
   constructor() {}
 
   async create(data) {
-    return data;
+    const newUser = await models.User.create(data);
+    return newUser;
   }
 
   async find() {
@@ -51,10 +52,9 @@ class UserService {
   }
 
   async update(id, changes) {
-    return {
-      id,
-      changes,
-    };
+    const user = await models.User.findByPk(id);
+    const rta = await user.update(changes);
+    return rta;
   }
 
   async delete(id) {
