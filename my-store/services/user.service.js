@@ -48,7 +48,13 @@ class UserService {
   }
 
   async findOne(id) {
-    return { id };
+    const user = await models.User.findByPk(id);
+    if (!user) {
+      throw boom.notFound('User not found');
+    }else {
+      return user;
+    }
+
   }
 
   async update(id, changes) {
@@ -58,7 +64,13 @@ class UserService {
   }
 
   async delete(id) {
-    return { id };
+    const user = await models.User.findByPk(id);
+    if (!user) {
+      throw boom.notFound('User not found');
+    }else{
+      await user.destroy();
+      return { id };
+    }
   }
 }
 
