@@ -32,7 +32,7 @@
 
 // module.exports = UserService;
 const boom = require('boom');
-const { models } = require('./../libs/sequalize');
+const { models } = require('./../libs/sequelize');
 
 class UserService {
   constructor() {}
