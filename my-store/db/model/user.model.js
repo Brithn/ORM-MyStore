@@ -1,4 +1,4 @@
-const { Sequelize, Model, DataTypes } = require('sequelize');
+const { Sequelize, Model, DataTypes, STRING } = require('sequelize');
 const USER_TABLE = 'users';
 const UserSchema = {
   id: {
@@ -12,7 +12,7 @@ const UserSchema = {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      len: [10, 255] 
+      len: [10, 255]
     }
   },
   email: {
@@ -24,12 +24,18 @@ const UserSchema = {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  role: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    default: "customer",
+  },
   createAt: {
     allowNull: false,
     type: DataTypes.DATE,
     field: 'create_at',
     defaultValue: Sequelize.NOW,
   },
+
 };
 
 class User extends Model {

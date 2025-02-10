@@ -11,12 +11,9 @@ npm run dev
 
 npx sequelize-cli migration:generate --name create_users_table
 
-*/ Comando para correr la migración*/
+*/ Comando para actualizar una  tabla con una nueva columna, la migración*/
 
-npm run migration:run
-migration:run": "sequelize-cli db:migrate
-migration:undo": "sequelize-cli db:migrate:undo
-migration:undo:all": "sequelize-cli db:migrate:undo:all
+npm run migrations:generate add-rol
 
 
 
