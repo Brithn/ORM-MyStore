@@ -1,0 +1,23 @@
+*/ Comando para ejecutar un nuevo contenedor para PostgreSQL*/
+
+docker-compose up -d db
+docker-compose up -d pgadmin
+
+*/ Comando para ejecutar el proyecto*/
+
+npm run dev
+
+*/ Comando para ejecutar las migraciones*/
+
+npx sequelize-cli migration:generate --name create_users_table
+
+*/ Comando para correr la migración*/
+
+npm run migration:run
+migration:run": "sequelize-cli db:migrate
+migration:undo": "sequelize-cli db:migrate:undo
+migration:undo:all": "sequelize-cli db:migrate:undo:all
+
+
+
+
