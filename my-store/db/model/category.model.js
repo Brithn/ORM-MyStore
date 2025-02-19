@@ -11,25 +11,25 @@ const CategorySchema = {
   },
   name: {
     type: DataTypes.STRING,
+    unique: true,
     allowNull: false,
   },
   image: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
-  createdAt: {
+  createAt: {
     allowNull: false,
     type: DataTypes.DATE,
-    field: 'created_at',
-    defaultValue: Sequelize.NOW,
+    field: 'create_at',
+    defaultValue: Sequelize.literal('NOW()'),
   },
 };
 
 class Category extends Model {
   static associate(models) {
-    // Define associations here if needed
+    this.hasMany(models.Product, { foreignKey: 'categoryId', as: 'products' });
   }
-
   static config(sequelize) {
     return {
       sequelize,

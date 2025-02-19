@@ -15,6 +15,14 @@ npx sequelize-cli migration:generate --name create_users_table
 
 npm run migrations:generate add-rol
 
+*/ Para actualizar una columna o agregarla en caso de que no este */
+
+npm run migrations:generate -n update-customer-id
+
+*/ Para ejecutar una migración*/
+
+npm run migration:run
+npm run migrations:generate -n products
 
 
 

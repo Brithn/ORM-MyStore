@@ -1,36 +1,3 @@
-// const boom = require('boom');
-// const getConnection = require('../libs/postgres');
-
-// class UserService {
-//   constructor() {}
-
-//   async create(data) {
-//     return data;
-//   }
-
-//   async find() {
-//     const client = await getConnection();
-//     const rst = await client.query('SELECT * FROM tasks');
-//     return rst.rows;
-//   }
-
-//   async findOne(id) {
-//     return { id };
-//   }
-
-//   async update(id, changes) {
-//     return {
-//       id,
-//       changes,
-//     };
-//   }
-
-//   async delete(id) {
-//     return { id };
-//   }
-// }
-
-// module.exports = UserService;
 const boom = require('boom');
 const { models } = require('./../libs/sequelize');
 
@@ -43,18 +10,19 @@ class UserService {
   }
 
   async find() {
-    const rst = await models.User.findAll();
+    const rst = await models.User.findAll({
+      include: ['customer'],
+    });
     return rst;
   }
 
   async findOne(id) {
     const user = await models.User.findByPk(id);
     if (!user) {
-      throw boom.notFound('User not found');
-    }else {
+      throw boom.notFound('user not found');
+    } else {
       return user;
     }
-
   }
 
   async update(id, changes) {
@@ -66,8 +34,8 @@ class UserService {
   async delete(id) {
     const user = await models.User.findByPk(id);
     if (!user) {
-      throw boom.notFound('User not found');
-    }else{
+      throw boom.notFound('user not found');
+    } else {
       await user.destroy();
       return { id };
     }

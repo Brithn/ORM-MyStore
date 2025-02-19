@@ -3,7 +3,7 @@
 const {
   CUSTOMER_TABLE,
   CustomerSchema,
-} = require('./../models/customer.model');
+} = require('./../model/customer.model');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface) {

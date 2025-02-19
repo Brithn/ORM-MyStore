@@ -1,7 +1,8 @@
-// modelo customer
 const { Sequelize, Model, DataTypes } = require('sequelize');
+
+const { USER_TABLE } = require('./user.model');
 const CUSTOMER_TABLE = 'customers';
-const CustomersSchema = {
+const CustomerSchema = {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -25,13 +26,27 @@ const CustomersSchema = {
     allowNull: false,
     type: DataTypes.DATE,
     field: 'create_at',
-    defaultValue: Sequelize.NOW,
+    defaultValue: Sequelize.literal('NOW()'),
+  },
+  userId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    field: 'user_id',
+    unique: true,
+    references: {
+      model: USER_TABLE,
+      key: 'id',
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'SET NULL',
   },
 };
 
 class Customer extends Model {
   static associate(models) {
-    // define association here
+    this.belongsTo(models.User, {
+      as: 'user',
+    });
   }
   static config(sequelize) {
     return {
@@ -42,4 +57,4 @@ class Customer extends Model {
     };
   }
 }
-module.exports = { CUSTOMER_TABLE, Customer, CustomersSchema };
+module.exports = { CUSTOMER_TABLE, Customer, CustomerSchema };
