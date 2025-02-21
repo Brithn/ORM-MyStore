@@ -22,6 +22,8 @@ npm run migrations:generate -n update-customer-id
 */ Para ejecutar una migración*/
 
 npm run migration:run
+
+*/ Para actualizar una columna o agregarla en caso de que no este */
 npm run migrations:generate -n products
 
 
