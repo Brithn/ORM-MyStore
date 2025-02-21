@@ -1,4 +1,3 @@
-// Migracion customer
 'use strict';
 const {
   CUSTOMER_TABLE,
