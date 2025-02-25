@@ -26,5 +26,5 @@ npm run migration:run
 */ Para actualizar una columna o agregarla en caso de que no este */
 npm run migrations:generate -n products
 npm run migrations:generate -n change-change-user-id
-
+npx sequelize-cli migration:generate --name order
 
