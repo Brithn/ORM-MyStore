@@ -6,7 +6,11 @@ const {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface) {
-    await queryInterface.createTable(ORDER_TABLE, OrderSchema);
+    // Excluimos "total" de OrderSchema antes de crear la tabla
+    const { total, ...restOfSchema } = OrderSchema;
+
+    // Creamos la tabla sin la columna "total" que es virtual
+    await queryInterface.createTable(ORDER_TABLE, restOfSchema);
   },
 
   async down(queryInterface) {

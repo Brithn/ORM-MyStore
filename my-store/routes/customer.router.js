@@ -1,16 +1,15 @@
-// customers.router.js
 const express = require('express');
 
-const CustomerService = require('./../services/customers.service');
+const CustomerService = require('./../services/customer.service');
 const validatorHandler = require('./../middlewares/validator.handler');
 const {
   createCustomerSchema,
   updateCustomerSchema,
   getCustomerSchema,
-} = require('./../schemas/customer.schema');
+} = require('./../schemas/customer.schemas');
 
 const router = express.Router();
-const service = new ProductsService();
+const service = new CustomerService();
 
 router.get('/', async (req, res, next) => {
   try {
