@@ -27,4 +27,7 @@ npm run migration:run
 npm run migrations:generate -n products
 npm run migrations:generate -n change-change-user-id
 npx sequelize-cli migration:generate --name order-product
+npx sequelize-cli migration:generate --name create_discounts
 
+-----
+npx sequelize-cli db:migrate
