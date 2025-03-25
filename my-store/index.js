@@ -3,9 +3,13 @@ const routerApi = require('./routes'); // Importar las rutas
 const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.handler');
 const app = express(); // Asignar express a mi aplicación
 const cors = require('cors');
+const helmet = require('helmet');
+
 require('dotenv').config();
 
+// Middleware
 
+app.use(helmet());
 app.use(cors());
 const port = 3000; // Asignación puerto donde se ejecutará el proy
 app.use(express.json());
@@ -26,3 +30,4 @@ app.use(errorHandler);
 app.listen(port, () => {
   console.log('Mi puerto' + port);
 });
+
