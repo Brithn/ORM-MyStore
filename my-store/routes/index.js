@@ -5,6 +5,7 @@ const categoriesRouter = require('./categories.router');
 const costumersRouter = require('./customer.router');
 const orderRouter = require('./orders.router');
 const discountRouter = require('./discount.router');
+
 function routerApi(app) {
   const router = express.Router();
   app.use('/api/v1', router);
