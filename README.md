@@ -1,4 +1,5 @@
-/* MyStore - Sistema de Gestión de Tienda con ORM */
+MyStore - Sistema de Gestión de Tienda con ORM
+
 Sistema de gestión de tienda desarrollado con Node.js utilizando ORM (Object-Relational Mapping) para el manejo de la base de datos PostgreSQL. Este proyecto implementa una arquitectura REST API completa con las siguientes características:
 
 Características principales:
